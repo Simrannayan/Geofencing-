@@ -6,8 +6,8 @@ import MapView, { Marker, Polygon } from 'react-native-maps';
 const App = () => {
   const [location, setLocation] = useState(null);
   const [geofenceCenter, setGeofenceCenter] = useState(null);
-  const [geofences, setGeofences] = useState({}); // Store geofences in a hashmap
-  const [role, setRole] = useState('user'); // State to store role
+  const [geofences, setGeofences] = useState({});
+  const [role, setRole] = useState('user');
 
   useEffect(() => {
     if (Platform.OS === 'android') {
@@ -39,7 +39,6 @@ const App = () => {
       }
 
       const position = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High });
-      console.log('Current Position:', position); // Debug line
       setLocation(position);
       setGeofenceCenter({
         latitude: position.coords.latitude,
@@ -54,17 +53,29 @@ const App = () => {
 
   const predefinedGeofences = {
     geofence1: [
-      { latitude: 28.480852032348064, longitude: 77.10190393427344 }, // top-left 
-      { latitude: 28.480778263517664, longitude: 77.10235369043151  }, // top-right    
-      { latitude: 28.48060802755854, longitude: 77.10237090597822}, // bottom-right
-      { latitude: 28.4806855795295, longitude: 77.10187165512335 }  // bottom-left
+      { latitude: 28.480220935800702, longitude: 77.10208252020924 }, // top-right                  //emaar 2(indigo)
+      { latitude: 28.480226608537322, longitude: 77.10193408374754 }, // top-left
+      { latitude: 28.479869225534735, longitude: 77.10183727735945 }, // bottom-left
+      { latitude: 28.47985788002279, longitude: 77.10194053750674 },  // bottom-right
+      { latitude: 28.480220935800702, longitude: 77.10208252020924 }, // close the loop to top-right
+    ],
+    geofence2:[
+      {latitude:28.48173831717597, longitude:77.10746827788579}, //top right                //emaar 1
+      {latitude:28.48171120501472, longitude:77.10715848275196},  //top left
+      {latitude:28.481572697125902,longitude:77.1071578121997},  //bottom left       
+      {latitude:28.481580948664778, longitude:77.10748705334844}  //bottom right
+    ],
+    geofence3:[
+      {latitude:28.481291286776568, longitude:77.10194976533356}, //top right                 //gbp
+      {latitude:28.481265942692694, longitude:77.10219652855706},//top left, 
+      {latitude:28.48122350607351, longitude:77.10193970705001}, //bottom left
+      {latitude:28.48120523474612, longitude:77.10215562487055}  //bottom right
     ]
   };
 
   const checkGeofences = (coords) => {
     Object.values(predefinedGeofences).forEach((geofence, index) => {
       const isInside = isPointInPolygon(coords, geofence);
-      console.log('Geofence Check:', isInside, geofence); // Debug line
       if (isInside) {
         if (role === 'admin') {
           Alert.alert(
@@ -129,7 +140,8 @@ const App = () => {
       { latitude: location.coords.latitude + 0.001, longitude: location.coords.longitude - 0.001 }, // top-left
       { latitude: location.coords.latitude + 0.001, longitude: location.coords.longitude + 0.001 }, // top-right
       { latitude: location.coords.latitude - 0.001, longitude: location.coords.longitude + 0.001 }, // bottom-right
-      { latitude: location.coords.latitude - 0.001, longitude: location.coords.longitude - 0.001 }  // bottom-left
+      { latitude: location.coords.latitude - 0.001, longitude: location.coords.longitude - 0.001 }, // bottom-left
+      { latitude: location.coords.latitude + 0.001, longitude: location.coords.longitude - 0.001 }, // close the loop to top-left
     ];
     setGeofences({ ...geofences, [geofenceId]: newGeofence });
   };
@@ -145,7 +157,6 @@ const App = () => {
       <Button title="Get Current Location" onPress={getCurrentLocation} />
       <Button title="Add Geofence" onPress={handleAddGeofence} />
 
-      {/* Role Buttons */}
       <View style={{ flexDirection: 'row', justifyContent: 'center', margin: 10 }}>
         <Button title="User" onPress={() => setRole('user')} />
         <Button title="Admin" onPress={() => setRole('admin')} />
@@ -157,8 +168,8 @@ const App = () => {
         initialRegion={{
           latitude: geofenceCenter ? geofenceCenter.latitude : 0,
           longitude: geofenceCenter ? geofenceCenter.longitude : 0,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          latitudeDelta: 0.0022,
+          longitudeDelta: 0.0021,
         }}
         showsUserLocation={true}
       >
