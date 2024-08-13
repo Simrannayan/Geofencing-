@@ -61,22 +61,22 @@ const App = () => {
 
   const predefinedGeofences = {
     geofence1: [
-      { latitude: 28.595227057509987, longitude: 77.07985384090048 }, // top-left
-      { latitude: 28.595227057509987, longitude: 77.07993296606332 }, // top-right
-      { latitude: 28.595159938827017, longitude: 77.07993296606332 }, // bottom-right
-      { latitude: 28.595159938827017, longitude: 77.07985384090048 }, // bottom-left
+      { latitude: 28.48173831717597, longitude: 77.10746827788579 }, // top-left          //indigo office
+      { latitude: 28.48171120501472, longitude: 77.10715848275196 }, // top-right     
+      { latitude: 28.481580948664778, longitude: 77.07993296606332 }, // bottom-right
+      { latitude: 28.481572697125902, longitude: 77.1071578121997 }, // bottom-left
     ],
     geofence2: [
-      { latitude: 28.59522823503036, longitude: 77.07963524087434 }, // top-left
-      { latitude: 28.59522823503036, longitude: 77.07969424947036 }, // top-right
-      { latitude: 28.595159938827017, longitude: 77.07969424947036 }, // bottom-right
-      { latitude: 28.595159938827017, longitude: 77.07963524087434 }, // bottom-left
+      { latitude: 28.480220935800702, longitude: 77.10208252020924 }, // top-right                  //emaar 2
+      { latitude: 28.480226608537322, longitude: 77.10193408374754 }, // top-left
+      { latitude: 28.47985788002279, longitude: 77.10194053750674 },  // bottom-right
+      { latitude: 28.479869225534735, longitude: 77.10183727735945 },   //bottom left
     ],
     geofence3: [
-      { latitude: 28.595053961871933, longitude: 77.07962384148647 }, // top-left
-      { latitude: 28.595053961871933, longitude: 77.07970833106714 }, // top-right
-      { latitude: 28.59498684307843, longitude: 77.07970833106714 }, // bottom-right
-      { latitude: 28.59498684307843, longitude: 77.07962384148647 }, // bottom-left
+      {latitude:28.481291286776568, longitude:77.10194976533356}, //top right                 //gbp 
+      {latitude:28.481265942692694, longitude:77.10219652855706}, //top left, 
+      {latitude:28.48120523474612, longitude:77.10215562487055}, // bottom-right
+      {latitude:28.48122350607351, longitude:77.10193970705001}, // bottom-left
     ],
   };
 
