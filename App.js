@@ -66,7 +66,7 @@ const App = () => {
       {latitude:28.481580948664778, longitude:77.10748705334844}  //bottom right
     ],
     geofence3:[
-      {latitude:28.481291286776568, longitude:77.10194976533356}, //top right                 //gbp
+      {latitude:28.481291286776568, longitude:77.10194976533356}, //top right                 //gbp 
       {latitude:28.481265942692694, longitude:77.10219652855706},//top left, 
       {latitude:28.48122350607351, longitude:77.10193970705001}, //bottom left
       {latitude:28.48120523474612, longitude:77.10215562487055}  //bottom right
